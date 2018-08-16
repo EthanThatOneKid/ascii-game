@@ -1,28 +1,35 @@
-let display = new Display(10, 10);
+let display = new Display(32, 20);
 
 let displayContainer = document.createElement("div");
 document.body.appendChild(displayContainer);
 
-let puck = {
-  model: new Model([["O"]]),
-  pos: {x: 1, y: 1},
-  vel: {x: 0.01, y: 0}
-};
-
-// Make Paddle Class and include it in the hmtl
-// This way, I can organize my collision functions in one spot as methods
+let puck = new Puck(display.w, display.h);;
+let paddleL = new Paddle("L", display.h, {x: 2, y: 1});
+let paddleR = new Paddle("R", display.h, {x: 27, y: 1});
 
 window.requestAnimationFrame(draw);
 
 function draw(timestamp) {
 
-  if (puck.pos.x >= display.w - 1 || puck.pos.x < 1) puck.vel.x *= -1;
-  if (puck.pos.y >= display.h - 1 || puck.pos.y < 1) puck.vel.y *= -1;
-  puck.pos.x += puck.vel.x;
-  puck.pos.y += puck.vel.y;
+  let puckStatus = puck.update();
+  switch(puckStatus) {
+    case "L":
+      paddleR.score();
+      reset();
+      break;
+    case "R":
+      paddleL.score();
+      reset();
+      break;
+    default: break;
+  }
+
+  puck.updateVel(paddleL.collide(puck));
 
   display.cls();
-  display.appendModel(puck.model, Math.round(puck.pos.x), Math.round(puck.pos.y));
+  display.appendModel(puck.model,    Math.round(puck.pos.x),    Math.round(puck.pos.y));
+  display.appendModel(paddleL.model, Math.round(paddleL.pos.x), Math.round(paddleL.pos.y));
+  display.appendModel(paddleR.model, Math.round(paddleR.pos.x), Math.round(paddleR.pos.y));
   display.update();
 
   displayContainer.innerHTML = display.el.outerHTML;
@@ -31,24 +38,11 @@ function draw(timestamp) {
 
 }
 
-/*
-let paddleL = {
-  model: new Model([
-    ["+", "-", "+"],
-    ["|", " ", "|"],
-    ["|", " ", "|"],
-    ["+", "-", "+"]
-  ]),
-  pos: {x: 1, y: 1}
+function reset() {
+  puck = new Puck(display.w, display.h);
 }
 
-let paddleR = {
-  model: new Model([
-    ["+", "-", "+"],
-    ["|", " ", "|"],
-    ["|", " ", "|"],
-    ["+", "-", "+"]
-  ]),
-  pos: {x: 6, y: 1}
-}
-*/
+document.addEventListener("keydown", event => {
+  const keyName = event.key;
+  paddleL.move(keyName);
+});
