@@ -9,6 +9,9 @@ let puck = {
   vel: {x: 0.01, y: 0}
 };
 
+// Make Paddle Class and include it in the hmtl
+// This way, I can organize my collision functions in one spot as methods
+
 window.requestAnimationFrame(draw);
 
 function draw(timestamp) {
