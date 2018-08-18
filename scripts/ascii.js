@@ -24,7 +24,9 @@ class Display {
   }
 
   append(s, x, y) {
-    this.data[y][x] = s;
+    try {
+      this.data[y][x] = s;
+    } catch(e) {}
   }
 
   appendModel(model, x_, y_) {
