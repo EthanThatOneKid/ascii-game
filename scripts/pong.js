@@ -2,7 +2,7 @@ class Puck {
   constructor(displayWidth, displayHeight) {
     this.model = new Model([["O"]]);
     this.pos = {x: displayWidth * 0.5, y: displayHeight * 0.5};
-    this.speed = 2;
+    this.speed = 1;
     this.vel = {x: -this.speed, y: 0};
     this.bounds = {w: displayWidth, h: displayHeight};
   }
@@ -11,7 +11,6 @@ class Puck {
     if (puck.pos.x < 1) return "L";
     if (this.pos.y >= this.bounds.h - 1 || puck.pos.y < 1) puck.vel.y *= -1; // bonk
     if (this.pos.y >= this.bounds.h - 1) this.pos.y = this.bounds.h - 1; // bottom padding
-    if (puck.pos.y < 1) this.pos.y = 1; // top padding
     puck.pos.x += puck.vel.x;
     puck.pos.y += puck.vel.y;
     return "safe";
@@ -23,7 +22,7 @@ class Puck {
 }
 
 class Paddle {
-  constructor(side, h, pos) {
+  constructor(side, h, pos, speed = 1) {
     this.model = new Model([
       ["+", "-", "+"],
       ["|", " ", "|"],
@@ -36,12 +35,12 @@ class Paddle {
     this.pos = pos;
     this.side = side;
     this.bound = h;
+    this.speed = speed;
     this.wins = 0;
   }
   move(key) {
-    let vel = 1;
-    if (key == "ArrowDown" || key == "s") this.pos.y += vel;
-    if (key == "ArrowUp" || key == "w") this.pos.y -= vel;
+    if (key == "ArrowDown" || key == "s") this.pos.y += this.speed;
+    if (key == "ArrowUp" || key == "w") this.pos.y -= this.speed;
     if (this.pos.y > this.bound - this.model.rows) this.pos.y = this.bound - this.model.rows;
     if (this.pos.y < 0) this.pos.y = 0;
   }

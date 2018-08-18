@@ -26,14 +26,15 @@ class Display {
   append(s, x, y) {
     try {
       this.data[y][x] = s;
-    } catch(e) {}
+    } catch(e) {
+      console.error(`Oops.. (${x}, ${y}) is out of bounds.`);
+    }
   }
 
   appendModel(model, x_, y_) {
     for (let y = 0; y < model.rows; y++) {
-      for (let x = 0; x < model.cols; x++) {
+      for (let x = 0; x < model.cols; x++)
         this.append(model.data[y][x], x + x_, y + y_);
-      }
     }
   }
 
