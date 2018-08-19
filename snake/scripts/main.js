@@ -19,13 +19,16 @@ function draw(timestamp) {
     let food = foods.data[i];
     if (food.x == snake.head.x && food.y == snake.head.y) {
       snake.eat();
-      foods.delete(i);
+      scoreBoard = createScoreBoard(snake.score);
+      foods.despawn(i);
+      foods.spawn(1);
+      break;
     }
   }
 
   display.cls();
   display.appendModels(snake.getModels());
-  //display.appendModels(foods.getModels());
+  display.appendModels(foods.getModels());
   display.appendModel(scoreBoard, Math.floor((display.w * 0.5) - (scoreBoard.cols * 0.5)), 0);
   display.update();
 
@@ -37,7 +40,6 @@ function draw(timestamp) {
 // END OF DRAW LOOP +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // Helper Functions:
-
 function pause() {
   paused = true;
   window.cancelAnimationFrame(drawLoop);
@@ -73,6 +75,7 @@ function init() {
   stats.dom.style.top = stats.dom.style.left = "";
   stats.dom.style.bottom = stats.dom.style.right = "0";
   document.body.appendChild(stats.dom);
+  foods.spawn(1);
   resume();
 }
 
