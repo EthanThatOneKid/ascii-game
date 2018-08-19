@@ -1,10 +1,10 @@
 let displayContainer = document.createElement("div");
 
-let display = new Display(32, 20);
-let puck = new Puck(display.w, display.h);
-let paddleL = new Paddle("L", display.h, {x: 1, y: 1}, 1);
-let paddleR = new Paddle("R", display.h, {x: 28, y: 1}, 0.5);
-let scoreBoard = createScoreBoard(paddleL.wins, paddleR.wins);
+let bounds = {x: 32, y: 20};
+let display = new Display(bounds.x, bounds.y);
+let snake = new Snake(1, 1, bounds);
+let foods = new Foods(bounds);
+let scoreBoard = createScoreBoard(snake.score);
 let drawLoop, paused = true, stats;
 
 splash();
@@ -13,23 +13,19 @@ splash();
 function draw(timestamp) {
   stats.begin();
 
-  let puckStatus = puck.update();
-  if (puckStatus == "L" || puckStatus == "R") {
-    if (puckStatus == "L") paddleR.score();
-    else if (puckStatus == "R") paddleL.score();
-    scoreBoard = createScoreBoard(paddleL.wins, paddleR.wins);
-    reset();
+  snake.update();
+
+  for (let i = 0; i < foods.data.length; i++) {
+    let food = foods.data[i];
+    if (food.x == snake.head.x && food.y == snake.head.y) {
+      snake.eat();
+      foods.delete(i);
+    }
   }
 
-  puck.updateVel(paddleL.collide(puck));
-  puck.updateVel(paddleR.collide(puck));
-
-  paddleR.ai(puck);
-
   display.cls();
-  display.appendModel(puck.model,    Math.round(puck.pos.x),    Math.round(puck.pos.y));
-  display.appendModel(paddleL.model, Math.round(paddleL.pos.x), Math.round(paddleL.pos.y));
-  display.appendModel(paddleR.model, Math.round(paddleR.pos.x), Math.round(paddleR.pos.y));
+  display.appendModels(snake.getModels());
+  //display.appendModels(foods.getModels());
   display.appendModel(scoreBoard, Math.floor((display.w * 0.5) - (scoreBoard.cols * 0.5)), 0);
   display.update();
 
@@ -41,9 +37,6 @@ function draw(timestamp) {
 // END OF DRAW LOOP +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // Helper Functions:
-function reset() {
-  puck = new Puck(display.w, display.h);
-}
 
 function pause() {
   paused = true;
@@ -57,8 +50,8 @@ function resume() {
   }
 }
 
-function createScoreBoard(p1, p2) {
-  let line = `${p1} | ${p2}`;
+function createScoreBoard(score) {
+  let line = `${score}`;
   return new Model([line.split("")]);
 }
 
@@ -86,13 +79,13 @@ function init() {
 function splash() {
   let splashContainer = document.createElement("div");
   let title = document.createElement("h1");
-  title.innerHTML = "HTML Pong";
+  title.innerHTML = "HTML Snake";
   let aside = document.createElement("small");
   aside.innerHTML = "rendition by EthanThatOneKid";
 
   let tempContainer = document.createElement("div");
   let instructions = document.createElement("p");
-  instructions.innerHTML = "Use your up and down arrow keys to move your paddle.";
+  instructions.innerHTML = "Use your arrow keys to guide your snake.";
   let gitHubLink = document.createElement("a");
   gitHubLink.innerHTML = "GitGub Repository";
   gitHubLink.href = "https://github.com/EthanThatOneKid/ascii";
@@ -117,5 +110,5 @@ function splash() {
 
 document.addEventListener("keydown", event => {
   const keyName = event.key;
-  paddleL.move(keyName);
+  snake.updateVel(keyName);
 });
