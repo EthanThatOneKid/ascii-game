@@ -6,6 +6,7 @@ let snake = new Snake(1, 1, bounds);
 let foods = new Foods(bounds);
 let scoreBoard = createScoreBoard(snake.score);
 let drawLoop, paused = true, stats;
+const keys = [];
 
 splash();
 
@@ -13,7 +14,16 @@ splash();
 function draw(timestamp) {
   stats.begin();
 
-  snake.update();
+  display.cls();
+  display.appendModels(snake.getModels());
+  display.appendModels(foods.getModels());
+  display.appendModel(scoreBoard, Math.floor((display.w * 0.5) - (scoreBoard.cols * 0.5)), 0);
+  display.update();
+
+  if (snake.checkIfDied()) {
+    pause();
+    handleKillScreen();
+  }
 
   for (let i = 0; i < foods.data.length; i++) {
     let food = foods.data[i];
@@ -26,11 +36,8 @@ function draw(timestamp) {
     }
   }
 
-  display.cls();
-  display.appendModels(snake.getModels());
-  display.appendModels(foods.getModels());
-  display.appendModel(scoreBoard, Math.floor((display.w * 0.5) - (scoreBoard.cols * 0.5)), 0);
-  display.update();
+  snake.updateVel(keys[0]);
+  snake.update();
 
   displayContainer.innerHTML = display.el.outerHTML;
 
@@ -46,10 +53,31 @@ function pause() {
 }
 
 function resume() {
-  if (paused) {
+  if (paused && !snake.dead) {
     paused = false;
     drawLoop = window.requestAnimationFrame(draw);
   }
+}
+
+function createKillScreen(n) {
+}
+
+function handleKillScreen() {
+  let msgs = ["Ya done goofed", "Did you just shart?", "Nice one", "Oopsies", "Oof"];
+  let msgModel = new Model([msgs[Math.floor(Math.random() * msgs.length)].split("")]);
+  let modelData = convertIntegerToModel(snake.score);
+  let killScreen = new Model(modelData);
+
+  display.cls();
+  display.appendModel(msgModel,
+    Math.floor((display.w * 0.5) - (msgModel.cols * 0.5)),
+    Math.floor(display.h * 0.5) - 3
+  );
+  display.appendModel(killScreen,
+    Math.floor((display.w * 0.5) - (killScreen.cols * 0.5)),
+    Math.floor(display.h * 0.5) - 2
+  );
+  display.update();
 }
 
 function createScoreBoard(score) {
@@ -111,7 +139,22 @@ function splash() {
   document.body.appendChild(tempContainer);
 }
 
+function convertIntegerToModel(n) {
+  const dictionary = [[["","_",""],["|","","|"],["|","_","|"]],[["","",""],["","","|"],["","","|"]],[["","_",""],["","_","|"],["|","_",""]],[["","_",""],["","_","|"],["","_","|"]],[["","",""],["|","_","|"],["","","|"]],[["","_",""],["|","_",""],["","_","|"]],[["","_",""],["|","_",""],["|","_","|"]],[["","_",""],["","","|"],["","","|"]],[["","_",""],["|","_","|"],["|","_","|"]],[["","_",""],["|","_","|"],["","","|"]]];
+  let digits = (n + "").split("");
+  return digits.reduce((acc, cur) => {
+    let gimme = dictionary[cur];
+    for (let i = 0; i < gimme.length; i++) {
+      for (let j = 0; j < gimme[i].length; j++) {
+        if (acc[i]) acc[i].push(gimme[i][j]);
+        else acc[i] = [gimme[i][j]];
+      }
+    } return acc;
+  }, []);
+}
+
 document.addEventListener("keydown", event => {
   const keyName = event.key;
-  snake.updateVel(keyName);
+  keys.pop();
+  keys.unshift(keyName);
 });
