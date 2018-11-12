@@ -7,7 +7,7 @@
 ## Documentation:
 * ### __Display Class__
   * #### __Create new instance__:
-  `const display = new Display(w, h)`
+  > `const display = new Display(w, h)`
     * `w` = columns of display
     * `h` = rows of display
   * #### __Privates__:
@@ -40,7 +40,7 @@
     * `display.log()`: logs the display data to the console (meant for development)
 * ### __Model Class__
   * #### __Create new instance__:
-  `const model = new model(2dArr)`
+  > `const model = new model(2dArr)`
     * `2dArr` =
       ```javascript
       [
