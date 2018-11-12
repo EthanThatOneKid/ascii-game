@@ -1,4 +1,8 @@
 # __ascii.js__
+![GitHub forks](https://img.shields.io/github/forks/EthanThatOneKid/ascii.svg?style=social&label=Fork)
+![GitHub stars](https://img.shields.io/github/forks/EthanThatOneKid/ascii.svg?style=social&label=Star)
+
+---
 
 ## Documentation:
 * ### __Display Class__
@@ -50,6 +54,8 @@
     * `model.cols`: the amount of columns in `model.data`
   * #### __Methods__:
     * `model.log()`: logs the model data to the console (meant for development)
+
+---
 
 ## Implementations
 * ### __[Pong](https://htmlpreview.github.io/?https://github.com/EthanThatOneKid/ascii/blob/master/pong/index.html)__
