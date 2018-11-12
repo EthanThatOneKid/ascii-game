@@ -6,7 +6,8 @@
 
 ## Documentation:
 * ### __Display Class__
-  * #### __Create new instance__: `const display = new Display(w, h)`
+  * #### __Create new instance__:
+  `const display = new Display(w, h)`
     * `w` = columns of display
     * `h` = rows of display
   * #### __Privates__:
@@ -21,7 +22,7 @@
       * `x` = x position in the display
       * `y` = y position in the display
     * `display.appendModel(model, x, y)`: appends a model to the display
-      * `model` = instance of the `model` class
+      * `model` = instance of the `Model` class
       * `x` = x position in the display
       * `y` = y position in the display
     * `display.appendModels(appendations)`: appends multiple models to the display
@@ -29,7 +30,7 @@
         ```javascript
         [
           {
-            model, // instance of model class
+            model, // instance of Model class
             x, // x position in the display
             y // y position in the display
           }
@@ -38,7 +39,8 @@
     * `display.cls()`: clears all of the cells in the display
     * `display.log()`: logs the display data to the console (meant for development)
 * ### __Model Class__
-  * #### __Create new instance__: `const model = new model(2dArr)`
+  * #### __Create new instance__:
+  `const model = new model(2dArr)`
     * `2dArr` =
       ```javascript
       [
