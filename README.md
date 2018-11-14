@@ -5,6 +5,7 @@
 ## Implementations
 * ### __[Pong](https://htmlpreview.github.io/?https://github.com/EthanThatOneKid/ascii/blob/master/pong/index.html)__
 * ### __[Snake](https://htmlpreview.github.io/?https://github.com/EthanThatOneKid/ascii/blob/master/snake/index.html)__
+* ### __[Breakout (under construction)](https://htmlpreview.github.io/?https://github.com/EthanThatOneKid/ascii/blob/master/breakout/index.html)__
 
 ## Documentation:
 * ### __Display Class__
