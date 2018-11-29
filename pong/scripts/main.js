@@ -94,7 +94,7 @@ function splash() {
   let instructions = document.createElement("p");
   instructions.innerHTML = "Use your up and down arrow keys to move your paddle.";
   let gitHubLink = document.createElement("a");
-  gitHubLink.innerHTML = "GitGub Repository";
+  gitHubLink.innerHTML = "GitHub Repository";
   gitHubLink.href = "https://github.com/EthanThatOneKid/ascii";
   let beginButton = document.createElement("button");
   beginButton.innerHTML = "BEGIN";
