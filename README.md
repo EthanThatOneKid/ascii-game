@@ -43,7 +43,7 @@
     * `display.log()`: logs the display data to the console (meant for development)
 * ### __Model Class__
   * #### __Create new instance__:
-  > `const model = new model(2dArr)`
+  > `const model = new Model(2dArr)`
     * `2dArr` =
       ```javascript
       [
