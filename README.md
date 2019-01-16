@@ -3,9 +3,9 @@
 ![GitHub stars](https://img.shields.io/github/forks/EthanThatOneKid/ascii.svg?style=social&label=Star)
 
 ## Implementations
-* ### __[Pong](https://htmlpreview.github.io/?https://github.com/EthanThatOneKid/ascii/blob/master/pong/index.html)__
-* ### __[Snake](https://htmlpreview.github.io/?https://github.com/EthanThatOneKid/ascii/blob/master/snake/index.html)__
-* ### __[Breakout (under construction)](https://htmlpreview.github.io/?https://github.com/EthanThatOneKid/ascii/blob/master/breakout/index.html)__
+* ### __[Pong](https://ethanthatonekid.github.io/ascii/pong)__
+* ### __[Snake](https://ethanthatonekid.github.io/ascii/snake)__
+* ### __[Breakout (under construction)](https://ethanthatonekid.github.io/ascii/breakout)__
 
 ## Documentation:
 * ### __Display Class__
