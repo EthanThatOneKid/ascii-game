@@ -44,9 +44,9 @@
     * `display.log()`: logs the display data to the console (meant for development)
 * ### __Model Class__
   * #### __Create new instance__:
-  > `const model = new Model(2dArr)`
+  > `const model = new Model(arr2d)`
   ```javascript
-  const 2dArr = [
+  const arr2d = [
     ["+", "-", "+"],
     ["|", " ", "|"],
     ["|", " ", "|"],
