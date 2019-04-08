@@ -54,7 +54,7 @@
   ];
   ```
   * #### __Privates__:
-    * `model.data`: the 2dArr entered upon instigation
+    * `model.data`: the arr2d entered upon instigation
     * `model.rows`: the amount of rows in `model.data`
     * `model.cols`: the amount of columns in `model.data`
   * #### __Methods__:
