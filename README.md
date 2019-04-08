@@ -29,7 +29,6 @@
       * `x` = x position in the display
       * `y` = y position in the display
     * `display.appendModels(appendations)`: appends multiple models to the display
-      * `appendations` =
         ```javascript
         const appendations = [
           {
