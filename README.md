@@ -19,7 +19,7 @@
     * `display.h`: rows of display
   * #### __Methods__:
     * `display.createElement()`: returns html element of display
-    * `display.update()`: updates `display.el`
+    * `display.flush()`: updates `display.el`
     * `display.append(s, x, y)`: overwrites one cell of the display
       * `s` = character being appended
       * `x` = x position in the display
@@ -28,6 +28,7 @@
       * `model` = instance of the `Model` class
       * `x` = x position in the display
       * `y` = y position in the display
+    * `display.capture()`: returns a new model of the data in the display
     * `display.appendModels(appendations)`: appends multiple models to the display
       * `appendations` =
         ```javascript
@@ -44,9 +45,8 @@
 * ### __Model Class__
   * #### __Create new instance__:
   > `const model = new Model(2dArr)`
-    * `2dArr` =
       ```javascript
-      [
+      const 2dArr = [
         ["+", "-", "+"],
         ["|", " ", "|"],
         ["|", " ", "|"],
