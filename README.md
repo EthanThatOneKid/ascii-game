@@ -28,18 +28,19 @@
       * `model` = instance of the `Model` class
       * `x` = x position in the display
       * `y` = y position in the display
-    * `display.capture()`: returns a new model of the data in the display
     * `display.appendModels(appendations)`: appends multiple models to the display
       * `appendations` =
         ```javascript
-        [
+        const appendations = [
           {
             model, // instance of Model class
             x, // x position in the display
             y // y position in the display
-          }
-        ]
+          },
+          (...)
+        ];
         ```
+    * `display.capture()`: returns a new model of the data in the display
     * `display.cls()`: clears all of the cells in the display
     * `display.log()`: logs the display data to the console (meant for development)
 * ### __Model Class__
@@ -51,7 +52,7 @@
         ["|", " ", "|"],
         ["|", " ", "|"],
         ["+", "-", "+"]
-      ]
+      ];
       ```
   * #### __Privates__:
     * `model.data`: the 2dArr entered upon instigation
