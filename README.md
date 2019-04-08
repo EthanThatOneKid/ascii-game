@@ -45,14 +45,14 @@
 * ### __Model Class__
   * #### __Create new instance__:
   > `const model = new Model(2dArr)`
-      ```javascript
-      const 2dArr = [
-        ["+", "-", "+"],
-        ["|", " ", "|"],
-        ["|", " ", "|"],
-        ["+", "-", "+"]
-      ];
-      ```
+  ```javascript
+  const 2dArr = [
+    ["+", "-", "+"],
+    ["|", " ", "|"],
+    ["|", " ", "|"],
+    ["+", "-", "+"]
+  ];
+  ```
   * #### __Privates__:
     * `model.data`: the 2dArr entered upon instigation
     * `model.rows`: the amount of rows in `model.data`
