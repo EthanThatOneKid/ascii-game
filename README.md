@@ -62,11 +62,31 @@ const model = new A.Model([
 #### `AsciiGame.Display.log()`
 * prints the current display data in the console
 * returns nothing
+#### `AsciiGame.Display.render(sel)`
+* `sel`: query selector of element that the display data will render to
+* returns nothing
 
 ### `AsciiGame.Model`
 #### `AsciiGame.Model.log()`
 * prints the current model data in the console
 * returns nothing
+
+## Examples
+### render your game on the html document
+```html
+<div id="game"></div>
+```
+```javascript
+const A = require('ascii-game');
+const display = new A.Display({"w": 32, "h": 18});
+const helloWorld = new A.Model([
+  ["H", "e", "l", "l", "o"],
+  ["W", "o", "r", "l", "d"]
+]);
+display.appendModel(helloWorld, 16, 8);
+display.flush();
+display.render("#game");
+```
 
 ---
 
