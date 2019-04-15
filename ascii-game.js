@@ -1,5 +1,6 @@
 // Dependencies
-const Display = require('./lib/display.js');
+const Display = require('./lib/display.js'),
+      Model = require('./lib/model.js');
 
 // Main
 module.exports = class AsciiGame {

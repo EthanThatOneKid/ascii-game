@@ -64,7 +64,7 @@ const model = new A.Model([
 * returns nothing
 
 ### `AsciiGame.Model`
-#### `AsciiGame.Model.Log()`
+#### `AsciiGame.Model.log()`
 * prints the current model data in the console
 * returns nothing
 
