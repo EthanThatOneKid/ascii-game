@@ -18,7 +18,7 @@ function draw(timestamp) {
   display.appendModels(snake.getModels());
   display.appendModels(foods.getModels());
   display.appendModel(scoreBoard, Math.floor((display.w * 0.5) - (scoreBoard.cols * 0.5)), 0);
-  display.update();
+  display.flush();
 
   if (snake.checkIfDied()) {
     pause();
@@ -77,7 +77,7 @@ function handleKillScreen() {
     Math.floor((display.w * 0.5) - (killScreen.cols * 0.5)),
     Math.floor(display.h * 0.5) - 2
   );
-  display.update();
+  display.flush();
 }
 
 function createScoreBoard(score) {

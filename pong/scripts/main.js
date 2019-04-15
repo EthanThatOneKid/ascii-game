@@ -31,7 +31,7 @@ function draw(timestamp) {
   display.appendModel(paddleL.model, Math.round(paddleL.pos.x), Math.round(paddleL.pos.y));
   display.appendModel(paddleR.model, Math.round(paddleR.pos.x), Math.round(paddleR.pos.y));
   display.appendModel(scoreBoard, Math.floor((display.w * 0.5) - (scoreBoard.cols * 0.5)), 0);
-  display.update();
+  display.flush();
 
   displayContainer.innerHTML = display.el.outerHTML;
 
