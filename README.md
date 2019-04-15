@@ -5,8 +5,8 @@
 ![npm downloads](https://img.shields.io/npm/dt/ascii-game.svg)
 
 ## Implementations
-* ### __[Pong](https://ethanthatonekid.github.io/ascii/pong)__
-* ### __[Snake](https://ethanthatonekid.github.io/ascii/snake)__
+* ### __[Pong](https://ethanthatonekid.github.io/ascii-game/pong)__
+* ### __[Snake](https://ethanthatonekid.github.io/ascii-game/snake)__
 
 ## Installation
 `npm i ascii-game`
