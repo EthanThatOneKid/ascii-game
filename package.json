@@ -1,6 +1,6 @@
 {
   "name": "ascii-game",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "![GitHub forks](https://img.shields.io/github/forks/EthanThatOneKid/ascii.svg?style=social&label=Fork)\r ![GitHub stars](https://img.shields.io/github/forks/EthanThatOneKid/ascii.svg?style=social&label=Star)\r ![bundle size](https://img.shields.io/bundlephobia/min/ascii-game.svg)\r ![npm downloads](https://img.shields.io/npm/dt/ascii-game.svg)",
   "main": "ascii-game.js",
   "directories": {
