@@ -17,10 +17,7 @@
 const A = require('ascii-game');
 
 // AsciiGame.Display takes an object with properties *w* and *h* to determine the dimensions of the display
-const display = new A.Display({
-  "w": <int rows>,
-  "h": <int cols>
-});
+const display = new A.Display(w <int cols>, h <int rows>);
 
 // AsciiGame.Model takes and stores a two-dimensional array of single-character strings
 const model = new A.Model([
