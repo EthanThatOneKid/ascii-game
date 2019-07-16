@@ -4,10 +4,6 @@
 ![bundle size](https://img.shields.io/bundlephobia/min/ascii-game.svg)
 ![npm downloads](https://img.shields.io/npm/dt/ascii-game.svg)
 
-## Implementations
-* __[Pong](https://ethanthatonekid.github.io/ascii-game/pong)__
-* __[Snake](https://ethanthatonekid.github.io/ascii-game/snake)__
-
 ## Installation
 `npm i ascii-game`
 
@@ -21,10 +17,10 @@ const display = new A.Display(w <int cols>, h <int rows>);
 
 // AsciiGame.Model takes and stores a two-dimensional array of single-character strings
 const model = new A.Model([
-  ["+", "-", "+"],
-  ["|", " ", "|"],
-  ["|", " ", "|"],
-  ["+", "-", "+"]
+  ["+-+"],
+  ["| |"],
+  ["| |"],
+  ["+-+"]
 ]);
 ```
 
